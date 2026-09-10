@@ -22,7 +22,7 @@ public class Giocatore extends Entita{
 		posizioneSuSchermataX = (pG.larghezzaSchermo/2) - (pG.dimensioneSprite/2);//calcolo per ottenere la metà della lunghezza della schermata visibile, considerando anche la sprite
 		posizioneSuSchermataY = (pG.altezzaSchermo/2) - (pG.dimensioneSprite/2);//calcolo per ottenere la metà dell'altezza della schermata visibile, considerando anche la sprite
 
-		areaSolida = new Rectangle(15,21,18,24);//are dove calcolare le collisioni
+		areaSolida = new Rectangle(5 * pG.scala, 7 * pG.scala, 6 * pG.scala, 8 * pG.scala);//are dove calcolare le collisioni
 
 		setValoriDefault();//valori di default del personaggio
 		getSpriteGiocatore();//sprite del personaggio
@@ -88,7 +88,6 @@ public class Giocatore extends Entita{
 					case "destra" :
 						posizioneGlobaleX += velocita;
 						break;
-				
 					}
 			}
 			contatoreSprite++;

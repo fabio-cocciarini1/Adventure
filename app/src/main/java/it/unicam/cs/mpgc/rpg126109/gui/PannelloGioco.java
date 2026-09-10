@@ -16,7 +16,7 @@ public class PannelloGioco extends JPanel implements Runnable{
 
 	//dimensioni sprite e schermo in sprite
 	int dimensioneOriginaleSprite = 16;
-	int scala = 3;
+	public int scala = 3;
 	public int dimensioneSprite = dimensioneOriginaleSprite * scala;
 	public int maxCol = 16;
 	public int maxRighe = 12;
