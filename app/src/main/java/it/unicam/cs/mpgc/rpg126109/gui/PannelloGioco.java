@@ -3,11 +3,14 @@ package it.unicam.cs.mpgc.rpg126109.gui;
 import it.unicam.cs.mpgc.rpg126109.gui.FinestraGioco;
 import it.unicam.cs.mpgc.rpg126109.userInput.UserInput;
 import it.unicam.cs.mpgc.rpg126109.entity.Giocatore;
-import it.unicam.cs.mpgc.rpg126109.GameLoop;
+import it.unicam.cs.mpgc.rpg126109.tile.GestoreTile;
+import it.unicam.cs.mpgc.rpg126109.ControlloCollisioni;
 
 
 import java.awt.*;
 import javax.swing.*;
+
+// TOGLIERE I COMMENTI SUPERFLUI
 
 public class PannelloGioco extends JPanel implements Runnable{
 
@@ -15,35 +18,50 @@ public class PannelloGioco extends JPanel implements Runnable{
 	int dimensioneOriginaleSprite = 16;
 	int scala = 3;
 	public int dimensioneSprite = dimensioneOriginaleSprite * scala;
-	int maxCol = 16;
-	int maxRighe = 12;
-	public int larghezzaSchermo = maxCol * dimensioneSprite;
-	public int altezzaSchermo = maxRighe * dimensioneSprite;
+	public int maxCol = 16;
+	public int maxRighe = 12;
+	public int larghezzaSchermo = maxCol * dimensioneSprite;//larghezza schermo in pixel(tile * tileInPixel)
+	public int altezzaSchermo = maxRighe * dimensioneSprite;//altezza schermo in pixel(tile * tileInPixel)
 
 	//dimensioni mappa
-	int maxMappaCol = 50;
-	int maxMappaRighe = 50;
-	int larghezzaMappa = maxMappaCol * dimensioneSprite;
-	int altezzaMappa = maxMappaRighe * dimensioneSprite;
+	public int maxMappaCol = 50;//numero di colonne che ha la mappa
+	public int maxMappaRighe = 50;//numero di righe che ha la mappa
+	int larghezzaMappa = maxMappaCol * dimensioneSprite;//larghezza mappa in pixel
+	int altezzaMappa = maxMappaRighe * dimensioneSprite;//altezza mappa in pixel
 	
 	//inizializzazione classi ausiliarie (?)
-	UserInput uIn = new UserInput();
-	Giocatore g1 = new Giocatore(this,uIn);
-	Thread threadDiGioco;
+	public UserInput uIn = new UserInput();
+	public Giocatore g1 = new Giocatore(this,uIn);
+	public GestoreTile gTile = new GestoreTile(this);
+	public ControlloCollisioni collisioniCheck = new ControlloCollisioni(this);
+	public Thread threadDiGioco;
 
-	
+	// inizializzazione del JPanel
 	public PannelloGioco(){
 		this.setPreferredSize(new Dimension(larghezzaSchermo,altezzaSchermo));
-		this.setBackground(Color.BLACK);
+		//this.setBackground(Color.BLACK);
 		this.setDoubleBuffered(true);
 		this.addKeyListener(uIn);
 		this.setFocusable(true);
 	}
-
+	
+	//metodo per far partire il thread
 	public void startThread(){
 		threadDiGioco = new Thread(this);
 		threadDiGioco.start();
 	}
+
+	/**LOOP di gioco
+	 *
+	 * il delta è il tempo che si deve aspettare
+	 * per ottenere il refresh rate desiderato
+	 *
+	 * il timer serve per controllare che il gioco
+	 * effettivamente venga processato nella velocità richiesta
+	 *
+	 * variabile fps per scegliere il refresh rate del gioco
+	 */
+	
 	int FPS = 60;
 
 	@Override
@@ -75,15 +93,17 @@ public class PannelloGioco extends JPanel implements Runnable{
 		}
 
 	}
-	
-	public void update(){}
+
+	public void update(){
+		g1.update();	
+	}
 
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-		g2.setColor(Color.WHITE);
-		g2.fillRect(100,100,dimensioneSprite,dimensioneSprite);
+		gTile.draw(g2);
+		g1.draw(g2);
 		g2.dispose();
 	}
 
