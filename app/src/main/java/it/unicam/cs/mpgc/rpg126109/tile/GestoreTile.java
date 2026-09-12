@@ -2,20 +2,25 @@ package it.unicam.cs.mpgc.rpg126109.tile;
 
 import java.awt.image.BufferedImage;
 import java.awt.*;
+import java.util.ArrayList;
 import java.io.*;
 import javax.imageio.ImageIO;
 
 
 import it.unicam.cs.mpgc.rpg126109.gui.PannelloGioco;
+import it.unicam.cs.mpgc.rpg126109.entita.GestoreEntita;
+import it.unicam.cs.mpgc.rpg126109.entita.Giocatore;
 
 public class GestoreTile extends Tile{
 	
 	PannelloGioco pG;
 	public Tile[] tile;
 	public int mappaNumeroTile[][]; //array bidimensionale [x][y] con una specifica tile in ogni posizione
+	Giocatore giocatore;
 
-	public GestoreTile(PannelloGioco pG){
+	public GestoreTile(PannelloGioco pG,Giocatore giocatore){
 		this.pG = pG;
+		this.giocatore = giocatore;
 		tile = new Tile[10];
 		mappaNumeroTile = new int[pG.maxMappaCol][pG.maxMappaRighe];
 
@@ -87,13 +92,13 @@ public class GestoreTile extends Tile{
 			int xMondo = colonnaMondo * pG.dimensioneSprite;
 			int yMondo = rigaMondo * pG.dimensioneSprite;
 			//coordinate del giocatore (nella schermata?)
-			int xSchermo = xMondo - pG.g1.posizioneGlobaleX + pG.g1.posizioneSuSchermataX;
-			int ySchermo = yMondo - pG.g1.posizioneGlobaleY + pG.g1.posizioneSuSchermataY;
+			int xSchermo = xMondo - giocatore.posizioneGlobaleX + giocatore.posizioneSuSchermataX;
+			int ySchermo = yMondo - giocatore.posizioneGlobaleY + giocatore.posizioneSuSchermataY;
 			
-			if(xMondo + pG.dimensioneSprite > pG.g1.posizioneGlobaleX - pG.g1.posizioneSuSchermataX ||
-					xMondo + pG.dimensioneSprite < pG.g1.posizioneSuSchermataX + pG.g1.posizioneSuSchermataX ||
-					yMondo - pG.dimensioneSprite > pG.g1.posizioneGlobaleY - pG.g1.posizioneSuSchermataY ||
-					yMondo + pG.dimensioneSprite < pG.g1.posizioneGlobaleY + pG.g1.posizioneSuSchermataY){
+			if(xMondo + pG.dimensioneSprite > giocatore.posizioneGlobaleX - giocatore.posizioneSuSchermataX ||
+					xMondo + pG.dimensioneSprite < giocatore.posizioneSuSchermataX + giocatore.posizioneSuSchermataX ||
+					yMondo - pG.dimensioneSprite > giocatore.posizioneGlobaleY - giocatore.posizioneSuSchermataY ||
+					yMondo + pG.dimensioneSprite < giocatore.posizioneGlobaleY + giocatore.posizioneSuSchermataY){
 						g2.drawImage(tile[numIdTile].immagineTile,xSchermo,ySchermo,pG.dimensioneSprite,pG.dimensioneSprite,null);
 					}
 
@@ -103,7 +108,33 @@ public class GestoreTile extends Tile{
 				colonnaMondo = 0;
 				rigaMondo++;
 			}
-
 		}
 	}
 }
+/**
+ * getImmagineTile()
+ * è responsabile per reperire la sprite dei blocchi dello sfondo e
+ * li inizializza in un array monodimensionale di tipo Tile
+ * specificando anche se è una sprite che ha COLLISIONI o meno
+ * -------------------
+ * BufferedImage getImmagine(String percorsoFile) throws IOException
+ * è un metodo responsabile per reperire la sprite dalla locazione in memoria
+ * specificata dalla String passatagli
+ * è stato implementato per rendere meno ripetitivo il processo di recupero immagini dalla memoria
+ * e di assegnamento di esse alle relative Tile() e per renderlo più facilmente leggibile
+ * NON gestisce le eventuali eccezioni, le passa al metodo che lo chiama
+ * -------------------
+ * caricaMappa(String percorsoFile)
+ * è il metodo responsabile per leggere e caricare in memoria la mappa
+ * selezionata
+ * -------------------
+ * draw(Graphics2D g2)
+ * è il metodo responsabile per disegnare a schermo la parte di mappa visibile
+ * a schermo
+ * per fare ciò si avvale delle coordinate dell'entita Giocatore per
+ * mostrare ciò che si trova intorno al Giocatore
+ * --------------------
+ * getGiocatore()
+ * è responsabile per ottenere il riferimento all'entità giocatore
+ * in modo da poterne ricavare dati di conseguenza
+ */

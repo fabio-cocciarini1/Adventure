@@ -1,18 +1,31 @@
 package it.unicam.cs.mpgc.rpg126109;
 
 import it.unicam.cs.mpgc.rpg126109.gui.PannelloGioco;
-import it.unicam.cs.mpgc.rpg126109.entity.Entita;
+import it.unicam.cs.mpgc.rpg126109.entita.*;
 
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
 public class ControlloCollisioni{
 	
 	PannelloGioco pG;
+	//GestoreEntita gE;
+	//Giocatore giocatore;
 
 	public ControlloCollisioni(PannelloGioco pG){
 		this.pG = pG;
+		//this.gE = gE;
+		//getGiocatore();
 	}
+	/*
+	public void getGiocatore(){
+		for(int i=0;i<gE.entitaSullaMappa.size();i++){
+			if(gE.entitaSullaMappa.get(i) instanceof Giocatore){
+				giocatore = (Giocatore) gE.entitaSullaMappa.get(i);
+			}
+		}
+	}*/
 
 
 	/** Per le collisioni ho bisogno delle coordinate dei quattro lati

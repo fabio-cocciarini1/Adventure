@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 
 public class UserInput implements KeyListener{
 	
-	public boolean su, giu, sinistra, destra;
+	public boolean su, giu, sinistra, destra, spazio;
 
 	@Override
 	public void keyTyped(KeyEvent e){}
@@ -26,6 +26,9 @@ public class UserInput implements KeyListener{
 		if(codice == KeyEvent.VK_D){
 			destra = true;
 		}
+		if(codice == KeyEvent.VK_SPACE){
+			spazio = true;
+		}
 	}
 
 	@Override
@@ -44,6 +47,9 @@ public class UserInput implements KeyListener{
 		}
 		if(codice == KeyEvent.VK_D){
 			destra = false;
+		}
+		if(codice == KeyEvent.VK_SPACE){
+			spazio = false;
 		}
 	}
 

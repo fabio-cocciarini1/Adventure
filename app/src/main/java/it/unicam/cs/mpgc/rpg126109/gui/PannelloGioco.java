@@ -1,8 +1,7 @@
 package it.unicam.cs.mpgc.rpg126109.gui;
 
-import it.unicam.cs.mpgc.rpg126109.gui.FinestraGioco;
 import it.unicam.cs.mpgc.rpg126109.userInput.UserInput;
-import it.unicam.cs.mpgc.rpg126109.entity.Giocatore;
+import it.unicam.cs.mpgc.rpg126109.entita.*;
 import it.unicam.cs.mpgc.rpg126109.tile.GestoreTile;
 import it.unicam.cs.mpgc.rpg126109.ControlloCollisioni;
 
@@ -14,14 +13,14 @@ import javax.swing.*;
 
 public class PannelloGioco extends JPanel implements Runnable{
 
-	//dimensioni sprite e schermo in sprite
-	int dimensioneOriginaleSprite = 16;
-	public int scala = 3;
+	int dimensioneOriginaleSprite = 16;//dimensione sprite e schermo in sprite
+	public int scala = 1;
 	public int dimensioneSprite = dimensioneOriginaleSprite * scala;
-	public int maxCol = 16;
-	public int maxRighe = 12;
+	public int maxCol = 50;
+	public int maxRighe = 50;
 	public int larghezzaSchermo = maxCol * dimensioneSprite;//larghezza schermo in pixel(tile * tileInPixel)
 	public int altezzaSchermo = maxRighe * dimensioneSprite;//altezza schermo in pixel(tile * tileInPixel)
+
 
 	//dimensioni mappa
 	public int maxMappaCol = 50;//numero di colonne che ha la mappa
@@ -29,22 +28,23 @@ public class PannelloGioco extends JPanel implements Runnable{
 	int larghezzaMappa = maxMappaCol * dimensioneSprite;//larghezza mappa in pixel
 	int altezzaMappa = maxMappaRighe * dimensioneSprite;//altezza mappa in pixel
 	
+
 	//inizializzazione classi ausiliarie (?)
 	public UserInput uIn = new UserInput();
-	public Giocatore g1 = new Giocatore(this,uIn);
-	public GestoreTile gTile = new GestoreTile(this);
-	public ControlloCollisioni collisioniCheck = new ControlloCollisioni(this);
+	public GestoreEntita gE = new GestoreEntita(this,uIn);
+	public GestoreTile gTile = new GestoreTile(this,gE.getGiocatore());
 	public Thread threadDiGioco;
+
 
 	// inizializzazione del JPanel
 	public PannelloGioco(){
 		this.setPreferredSize(new Dimension(larghezzaSchermo,altezzaSchermo));
-		//this.setBackground(Color.BLACK);
 		this.setDoubleBuffered(true);
 		this.addKeyListener(uIn);
 		this.setFocusable(true);
 	}
 	
+
 	//metodo per far partire il thread
 	public void startThread(){
 		threadDiGioco = new Thread(this);
@@ -78,7 +78,7 @@ public class PannelloGioco extends JPanel implements Runnable{
 			delta += (misuraAttuale - ultimaMisura) / intervallo;
 			timer += (misuraAttuale - ultimaMisura);
 			ultimaMisura = misuraAttuale;
-
+			
 			if(delta >= 1){
 				update();
 				repaint();
@@ -91,11 +91,10 @@ public class PannelloGioco extends JPanel implements Runnable{
 				timer = 0;
 			}
 		}
-
 	}
 
 	public void update(){
-		g1.update();	
+		gE.update();	
 	}
 
 	
@@ -103,7 +102,7 @@ public class PannelloGioco extends JPanel implements Runnable{
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		gTile.draw(g2);
-		g1.draw(g2);
+		gE.draw(g2);
 		g2.dispose();
 	}
 
