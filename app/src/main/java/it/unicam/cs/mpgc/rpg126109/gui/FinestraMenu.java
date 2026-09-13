@@ -101,7 +101,9 @@ private class clicContinua implements ActionListener{
 
 private class clicEsci implements ActionListener{
 	public void actionPerformed(ActionEvent e){
-		System.out.println("pulsanteeeeeeeeeeeeeeee");
+		finestra.setVisible(false);
+		finestra.dispose();
+		System.exit(0);
 		}
 	}
 }
