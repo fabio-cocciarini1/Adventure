@@ -1,10 +1,7 @@
 # 📌 Adventure
 
 Adventure è un semplice gioco rpg in cui l'obiettivo è sconfiggere più nemici
-possibili senza morire.
-____
-Breve descrizione del progetto (2-3 righe):  
-Spiega cosa fa il programma e a cosa serve.
+possibili.
 
 ---
 
@@ -17,8 +14,8 @@ Spiega cosa fa il programma e a cosa serve.
 ### Istruzioni
 
 ```bash
-git clone <url-del-repository>
-cd <nome-cartella>
+git clone https://github.com/fabio-cocciarini1/Adventure.git
+cd Adventure
 ```
 
 ### Build del progetto
@@ -37,12 +34,6 @@ cd <nome-cartella>
 
 Non è stato usato alcun genere di strumento di AI per la realizzazione del progetto.
 
-Indicare **se e come** sono stati utilizzati strumenti di AI (es. ChatGPT, Copilot, ecc.).
-Descrivere in modo chiaro **per quali attività** e **con quale livello di intervento personale**.
-
-È importante dimostrare che:
-* il codice è stato **compreso**
-* l’AI è stata usata come **supporto**, non come sostituto
 ---
 
 📌 Per una descrizione più dettagliata dell’uso dell’AI, utilizzare la **Wiki del repository**.
