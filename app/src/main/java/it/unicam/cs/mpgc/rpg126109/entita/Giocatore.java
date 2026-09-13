@@ -14,21 +14,36 @@ public class Giocatore extends Entita{
 	UserInput uIn;
 	GestoreEntita gE;
 
-	//public int posizioneSuSchermataX, posizioneSuSchermataY;
-	public int vita,danno;
+	public int vita,numeroUccisioni;
 
-	public Giocatore(PannelloGioco pG,UserInput uIn,GestoreEntita gE){
+	public Giocatore(PannelloGioco pG,UserInput uIn,GestoreEntita gE,boolean caricaSalvataggio){
 		super(pG);
 		this.uIn = uIn;
 		this.gE = gE;
 
-		//posizioneSuSchermataX = (pG.larghezzaSchermo/2) - (pG.dimensioneSprite/2); // metà larghezza
-		//posizioneSuSchermataY = (pG.altezzaSchermo/2) - (pG.dimensioneSprite/2); // metà altezza
 
 		areaSolida = new Rectangle(5 * pG.scala, 7 * pG.scala, 6 * pG.scala, 8 * pG.scala);//area dove calcolare le collisioni
 
+		if(caricaSalvataggio){
+			getNumeroUccisioniMemorizzate();
+		}
+
 		setValoriDefault();//valori di default del personaggio
 		getSpriteGiocatore();//sprite del personaggio
+	}
+	public void getNumeroUccisioniMemorizzate(){
+		try(BufferedReader leggiUccisioni = new BufferedReader(new FileReader("nemiciUccisioni.txt"))){
+			String linea;
+			linea = leggiUccisioni.readLine();
+			numeroUccisioni = Integer.parseInt(linea);
+
+		}catch(IOException e){e.printStackTrace();}
+	}
+	public void setNumeroUccisioniMemorizzate(int numeroUccisioniAttuale){
+		try(BufferedWriter annotaUccisioni = new BufferedWriter(new FileWriter("nemiciUccisioni.txt"))){
+			annotaUccisioni.write(String.valueOf(numeroUccisioniAttuale));
+			annotaUccisioni.close();
+		}catch(IOException e){e.printStackTrace();}
 	}
 
 	public void setValoriDefault(){
@@ -123,6 +138,9 @@ public class Giocatore extends Entita{
 					Math.abs(gE.entitaSullaMappa.get(i).posizioneGlobaleX-posizioneGlobaleX)<pG.dimensioneSprite &&
 					Math.abs(gE.entitaSullaMappa.get(i).posizioneGlobaleY - posizioneGlobaleY)<pG.dimensioneSprite){
 				gE.entitaSullaMappa.remove(i);
+				numeroUccisioni++;
+				setNumeroUccisioniMemorizzate(numeroUccisioni);
+				System.out.println(numeroUccisioni);
 			}
 		}
 	}

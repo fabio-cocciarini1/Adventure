@@ -28,22 +28,24 @@ public class PannelloGioco extends JPanel implements Runnable{
 	int larghezzaMappa = maxMappaCol * dimensioneSprite;//larghezza mappa in pixel
 	int altezzaMappa = maxMappaRighe * dimensioneSprite;//altezza mappa in pixel
 	
-
-	//inizializzazione classi ausiliarie (?)
-	public UserInput uIn = new UserInput();
-	public GestoreEntita gE = new GestoreEntita(this,uIn);
-	public GestoreTile gTile = new GestoreTile(this,gE.getGiocatore());
-	public Thread threadDiGioco;
+	//variabile che decide se caricare o meno il salvataggio
+	public boolean caricaSalvataggio;
 
 
 	// inizializzazione del JPanel
-	public PannelloGioco(){
+	public PannelloGioco(caricaSalvataggio){
 		this.setPreferredSize(new Dimension(larghezzaSchermo,altezzaSchermo));
 		this.setDoubleBuffered(true);
 		this.addKeyListener(uIn);
 		this.setFocusable(true);
+		this.caricaSalvataggio = caricaSalvataggio;
 	}
-	//public PannelloGioco(){}
+
+	//inizializzazione classi ausiliarie (?)
+	public UserInput uIn = new UserInput();
+	public GestoreEntita gE = new GestoreEntita(this,uIn,this.caricaSalvataggio);
+	public GestoreTile gTile = new GestoreTile(this,gE.getGiocatore());
+	public Thread threadDiGioco;
 	
 
 	//metodo per far partire il thread
@@ -56,6 +58,7 @@ public class PannelloGioco extends JPanel implements Runnable{
 	 *
 	 * il delta è il tempo che si deve aspettare
 	 * per ottenere il refresh rate desiderato
+	 * (ogni delta viene stampato a schermo un frame)
 	 *
 	 * il timer serve per controllare che il gioco
 	 * effettivamente venga processato nella velocità richiesta
@@ -72,7 +75,7 @@ public class PannelloGioco extends JPanel implements Runnable{
 		long ultimaMisura = System.nanoTime();
 		long misuraAttuale;
 		long timer = 0;
-		int refreshRate = 0;
+		//int refreshRate = 0;
 
 		while(threadDiGioco != null){
 			misuraAttuale = System.nanoTime();
@@ -84,11 +87,11 @@ public class PannelloGioco extends JPanel implements Runnable{
 				update();
 				repaint();
 				delta--;
-				refreshRate++;
+				//refreshRate++;
 			}
 			if(timer >= 1000000000){
-				System.out.println("FPS : " + refreshRate);
-				refreshRate = 0;
+				//System.out.println("FPS : " + refreshRate);
+				//refreshRate = 0;
 				timer = 0;
 			}
 		}

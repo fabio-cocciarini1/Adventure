@@ -16,11 +16,12 @@ public class GestoreEntita extends Entita{
 	Giocatore giocatore;
 	public ArrayList<Entita> entitaSullaMappa;
 
-	public GestoreEntita(PannelloGioco pG, UserInput uIn){
+	public GestoreEntita(PannelloGioco pG, UserInput uIn,boolean caricaSalvataggio){
 		super(pG);
 		this.uIn = uIn;
 		this.entitaSullaMappa = new ArrayList<Entita>();
-		giocatore = new Giocatore(pG,uIn,this);
+		System.out.println(caricaSalvataggio);
+		giocatore = new Giocatore(pG,uIn,this,true);
 		entitaSullaMappa.add(giocatore);
 		collisioniCheck = new ControlloCollisioni(pG);
 	}
@@ -59,7 +60,6 @@ public class GestoreEntita extends Entita{
 	public void draw(Graphics2D g2){
 		for(int i=0;i<entitaSullaMappa.size();i++){
 			Entita n = entitaSullaMappa.get(i);
-			System.out.println("coordinate del nemico "+i+" x:"+n.posizioneGlobaleX+" y: "+n.posizioneGlobaleY);
 			entitaSullaMappa.get(i).draw(g2);
 		}
 	}

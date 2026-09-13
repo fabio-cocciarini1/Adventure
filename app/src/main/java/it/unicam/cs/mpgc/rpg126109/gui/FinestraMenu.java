@@ -73,7 +73,7 @@ private class clicNuovaPartita implements ActionListener{
 			finestra.dispose();
 			JFrame finestraGioco = new JFrame("Adventure");
 			finestraGioco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			PannelloGioco pG = new PannelloGioco();
+			PannelloGioco pG = new PannelloGioco(false);
 			finestraGioco.add(pG);
 			finestraGioco.pack();
 			finestraGioco.setResizable(false);
@@ -89,7 +89,7 @@ private class clicContinua implements ActionListener{
 			finestra.dispose();
 			JFrame finestraGioco = new JFrame("Adventure");
 			finestraGioco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			PannelloGioco pG = new PannelloGioco();
+			PannelloGioco pG = new PannelloGioco(true);
 			finestraGioco.add(pG);
 			finestraGioco.pack();
 			finestraGioco.setResizable(false);
