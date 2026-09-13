@@ -1,5 +1,8 @@
-# 📌 Nome del Progetto
+# 📌 Adventure
 
+Adventure è un semplice gioco rpg in cui l'obiettivo è sconfiggere più nemici
+possibili senza morire.
+____
 Breve descrizione del progetto (2-3 righe):  
 Spiega cosa fa il programma e a cosa serve.
 
@@ -31,6 +34,8 @@ cd <nome-cartella>
 ---
 
 ## 🤖 Uso di strumenti di AI
+
+Non è stato usato alcun genere di strumento di AI per la realizzazione del progetto.
 
 Indicare **se e come** sono stati utilizzati strumenti di AI (es. ChatGPT, Copilot, ecc.).
 Descrivere in modo chiaro **per quali attività** e **con quale livello di intervento personale**.
