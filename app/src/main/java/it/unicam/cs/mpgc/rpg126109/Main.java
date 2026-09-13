@@ -1,7 +1,5 @@
 package it.unicam.cs.mpgc.rpg126109;
 
-import it.unicam.cs.mpgc.rpg126109.gui.FinestraGioco;
-import it.unicam.cs.mpgc.rpg126109.gui.*;
 import it.unicam.cs.mpgc.rpg126109.gui.FinestraMenu;
 
 
