@@ -16,7 +16,7 @@ public class FinestraMenu extends Finestra{
 		finestra.setBounds(750,500,300,300);
 		contenutoPane = finestra.getContentPane();
 
-		JButton nuovaPartita = new JButton("Nuovo Partita");
+		JButton nuovaPartita = new JButton("Nuova Partita");
 		JButton continua = new JButton("Continua");
 		JButton esci = new JButton("Esci");
 		
