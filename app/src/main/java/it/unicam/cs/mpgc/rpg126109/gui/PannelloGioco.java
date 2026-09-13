@@ -33,7 +33,7 @@ public class PannelloGioco extends JPanel implements Runnable{
 
 
 	// inizializzazione del JPanel
-	public PannelloGioco(caricaSalvataggio){
+	public PannelloGioco(boolean caricaSalvataggio){
 		this.setPreferredSize(new Dimension(larghezzaSchermo,altezzaSchermo));
 		this.setDoubleBuffered(true);
 		this.addKeyListener(uIn);
