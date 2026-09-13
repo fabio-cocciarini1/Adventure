@@ -25,7 +25,7 @@ public class GestoreTile extends Tile{
 		mappaNumeroTile = new int[pG.maxMappaCol][pG.maxMappaRighe];
 
 		getImmagineTile();
-		caricaMappa("/mappe/mappa.txt");
+		caricaMappa("/mappe/mappaGiusta.txt");
 	}
 
 	public void getImmagineTile(){
@@ -87,7 +87,11 @@ public class GestoreTile extends Tile{
 		while(colonnaMondo < pG.maxMappaCol && rigaMondo < pG.maxMappaRighe){
 			// numero identificativo della sprite nelle coordinate selezionate
 			int numIdTile = mappaNumeroTile[colonnaMondo][rigaMondo];
-
+			int xMondo = colonnaMondo * pG.dimensioneSprite;
+			int yMondo = rigaMondo * pG.dimensioneSprite;
+			
+			g2.drawImage(tile[numIdTile].immagineTile,xMondo,yMondo,pG.dimensioneSprite,pG.dimensioneSprite,null);
+			/*
 			//coordinate del mondo
 			int xMondo = colonnaMondo * pG.dimensioneSprite;
 			int yMondo = rigaMondo * pG.dimensioneSprite;
@@ -100,7 +104,7 @@ public class GestoreTile extends Tile{
 					yMondo - pG.dimensioneSprite > giocatore.posizioneGlobaleY - giocatore.posizioneSuSchermataY ||
 					yMondo + pG.dimensioneSprite < giocatore.posizioneGlobaleY + giocatore.posizioneSuSchermataY){
 						g2.drawImage(tile[numIdTile].immagineTile,xSchermo,ySchermo,pG.dimensioneSprite,pG.dimensioneSprite,null);
-					}
+					}*/
 
 			colonnaMondo++;
 

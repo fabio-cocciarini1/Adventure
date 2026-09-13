@@ -14,17 +14,17 @@ import javax.swing.*;
 public class PannelloGioco extends JPanel implements Runnable{
 
 	int dimensioneOriginaleSprite = 16;//dimensione sprite e schermo in sprite
-	public int scala = 1;
+	public int scala = 3;
 	public int dimensioneSprite = dimensioneOriginaleSprite * scala;
-	public int maxCol = 50;
-	public int maxRighe = 50;
+	public int maxCol = 30;
+	public int maxRighe = 20;
 	public int larghezzaSchermo = maxCol * dimensioneSprite;//larghezza schermo in pixel(tile * tileInPixel)
 	public int altezzaSchermo = maxRighe * dimensioneSprite;//altezza schermo in pixel(tile * tileInPixel)
 
 
 	//dimensioni mappa
-	public int maxMappaCol = 50;//numero di colonne che ha la mappa
-	public int maxMappaRighe = 50;//numero di righe che ha la mappa
+	public int maxMappaCol = 30;//numero di colonne che ha la mappa
+	public int maxMappaRighe = 20;//numero di righe che ha la mappa
 	int larghezzaMappa = maxMappaCol * dimensioneSprite;//larghezza mappa in pixel
 	int altezzaMappa = maxMappaRighe * dimensioneSprite;//altezza mappa in pixel
 	
