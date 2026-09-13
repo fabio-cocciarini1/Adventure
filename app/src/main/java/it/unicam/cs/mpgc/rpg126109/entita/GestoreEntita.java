@@ -38,13 +38,15 @@ public class GestoreEntita extends Entita{
 
 	public void minNemici(int minNemici){
 		int numNemici = 0;
-		int coordinataCasuale = 0;
+		int coordinataCasualeX = 0;
+		int coordinataCasualeY = 0;
 		for(int i=0;i<entitaSullaMappa.size();i++){
 			if(entitaSullaMappa.get(i) instanceof Nemico){numNemici++;}
 		}
 		while(numNemici < minNemici){
-			coordinataCasuale = pG.dimensioneSprite * numeroACasoTra(2,46);
-			entitaSullaMappa.add(new Nemico(pG,coordinataCasuale,coordinataCasuale,giocatore));
+			coordinataCasualeX = pG.dimensioneSprite * numeroACasoTra(0,30);
+			coordinataCasualeY = pG.dimensioneSprite * numeroACasoTra(0,20);
+			entitaSullaMappa.add(new Nemico(pG,coordinataCasualeX,coordinataCasualeY,giocatore));
 			numNemici++;
 		}
 	}

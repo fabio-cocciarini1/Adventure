@@ -43,6 +43,7 @@ public class PannelloGioco extends JPanel implements Runnable{
 		this.addKeyListener(uIn);
 		this.setFocusable(true);
 	}
+	//public PannelloGioco(){}
 	
 
 	//metodo per far partire il thread

@@ -51,20 +51,13 @@ public class Nemico extends Entita{
 
 	public void getSprite(){
 		try{
-			su1 = ImageIO.read(getClass().getResourceAsStream("/nemico/goblin.png"));
-			su2 = ImageIO.read(getClass().getResourceAsStream("/nemico/goblin.png"));
 			giu1 = ImageIO.read(getClass().getResourceAsStream("/nemico/goblin.png"));
-			giu2 = ImageIO.read(getClass().getResourceAsStream("/nemico/goblin.png"));
-			sinistra1 = ImageIO.read(getClass().getResourceAsStream("/nemico/goblin.png"));
-			sinistra2 = ImageIO.read(getClass().getResourceAsStream("/nemico/goblin.png"));
-			destra1 = ImageIO.read(getClass().getResourceAsStream("/nemico/goblin.png"));
-			destra2 = ImageIO.read(getClass().getResourceAsStream("/nemico/goblin.png"));
 		}catch(IOException e){e.printStackTrace();}
 	}
 
 	public void draw(Graphics2D g2){
 		if(visibile()){
-			g2.drawImage(su1,posizioneGlobaleX,posizioneGlobaleY,pG.dimensioneSprite,pG.dimensioneSprite,null);
+			g2.drawImage(giu1,posizioneGlobaleX,posizioneGlobaleY,pG.dimensioneSprite,pG.dimensioneSprite,null);
 		}
 	}
 	/*public int xRelativaAGiocatore(){

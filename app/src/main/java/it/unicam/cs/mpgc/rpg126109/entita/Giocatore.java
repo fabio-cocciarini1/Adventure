@@ -151,21 +151,6 @@ public class Giocatore extends Entita{
 			case "spazio":
 				sprite = attaccoGiu;
 				break;
-				/*
-				switch(direzione){
-					case "su":
-						sprite = attaccoSu;
-						break;
-					case "giu":
-						sprite = attaccoGiu;
-						break;
-					case "sinistra":
-						sprite = attaccoSinistra;
-						break;
-					case "destra":
-						sprite = attaccoDestra;
-						break;
-				}*/
 			}
 		}else{
 			switch(direzione){

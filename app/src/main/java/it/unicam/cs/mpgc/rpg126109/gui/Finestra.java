@@ -7,30 +7,19 @@ public class Finestra extends JFrame{
 
 	Container contenutoPane = null;
 
-	public Finestra(int larghezza,int altezza){
-		JFrame finestra = new JFrame("Finestra");
-		finestra.setBounds(500, 500, larghezza, altezza);
-		contenutoPane = finestra.getContentPane();
-		
-		//componenti
-		JLabel vita = new JLabel("vita : 100%");
-		JLabel difesa = new JLabel("difesa = 0");
-		JLabel attacco = new JLabel("attacco =  1");
+	public Finestra(String nomeFinestra){
+		//dimensioni schermo utente
+		Dimension dimensioneShermo = Toolkit.getDefaultToolkit().getScreenSize();
+		int larghezzaSchermo = dimensioneShermo.width;
+		int altezzaSchermo = dimensioneShermo.height;
 
-		JButton salva = new JButton("Salva");
-		
-		JPanel barraSuperiore = new JPanel(new FlowLayout());
+		//controllo valori di inizializzazione
+		if(nomeFinestra == null /*||
+			       	posizioneX < 0 || posizioneX > larghezzaSchermo - larghezza ||
+				posizioneY < 0 || posizioneY > altezzaSchermo - altezza||
+				larghezza < 0 || larghezza > larghezzaSchermo ||
+				altezza < 0 || altezza > altezzaSchermo*/)
+		{throw new IllegalArgumentException("Valori di inizializzazione della finestra non validi");}
 
-		barraSuperiore.add(salva);
-		barraSuperiore.add(vita);
-		barraSuperiore.add(difesa);
-		barraSuperiore.add(attacco);
-
-		
-
-		finestra.add(barraSuperiore, BorderLayout.NORTH);
-
-		finestra.setVisible(true);
-		finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
