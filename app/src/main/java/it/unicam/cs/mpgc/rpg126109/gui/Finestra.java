@@ -14,11 +14,7 @@ public class Finestra extends JFrame{
 		int altezzaSchermo = dimensioneShermo.height;
 
 		//controllo valori di inizializzazione
-		if(nomeFinestra == null /*||
-			       	posizioneX < 0 || posizioneX > larghezzaSchermo - larghezza ||
-				posizioneY < 0 || posizioneY > altezzaSchermo - altezza||
-				larghezza < 0 || larghezza > larghezzaSchermo ||
-				altezza < 0 || altezza > altezzaSchermo*/)
+		if(nomeFinestra == null )
 		{throw new IllegalArgumentException("Valori di inizializzazione della finestra non validi");}
 
 	}

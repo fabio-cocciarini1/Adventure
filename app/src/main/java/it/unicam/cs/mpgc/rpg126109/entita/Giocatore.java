@@ -20,17 +20,17 @@ public class Giocatore extends Entita{
 		super(pG);
 		this.uIn = uIn;
 		this.gE = gE;
-
-
 		areaSolida = new Rectangle(5 * pG.scala, 7 * pG.scala, 6 * pG.scala, 8 * pG.scala);//area dove calcolare le collisioni
 
 		if(caricaSalvataggio){
 			getNumeroUccisioniMemorizzate();
 		}
-
 		setValoriDefault();//valori di default del personaggio
 		getSpriteGiocatore();//sprite del personaggio
 	}
+
+
+	//metodo responsabile per caricare il salvataggio dalla memoria
 	public void getNumeroUccisioniMemorizzate(){
 		try(BufferedReader leggiUccisioni = new BufferedReader(new FileReader("nemiciUccisioni.txt"))){
 			String linea;
@@ -39,6 +39,7 @@ public class Giocatore extends Entita{
 
 		}catch(IOException e){e.printStackTrace();}
 	}
+	//metodo responsabile per scrivere i progressi in memoria
 	public void setNumeroUccisioniMemorizzate(int numeroUccisioniAttuale){
 		try(BufferedWriter annotaUccisioni = new BufferedWriter(new FileWriter("nemiciUccisioni.txt"))){
 			annotaUccisioni.write(String.valueOf(numeroUccisioniAttuale));
@@ -148,7 +149,7 @@ public class Giocatore extends Entita{
 	public void draw(Graphics2D g2){
 
 		BufferedImage sprite = null;
-		if(!uIn.spazio){
+		if(!uIn.spazio){//quando non si sta attaccondo
 		switch(direzione){
 			case "su":
 				if(numSprite == 1){sprite = su1;}
@@ -170,7 +171,7 @@ public class Giocatore extends Entita{
 				sprite = attaccoGiu;
 				break;
 			}
-		}else{
+		}else{//quando si sta attaccando
 			switch(direzione){
 				case "su":
 					sprite = attaccoSu;
@@ -186,8 +187,6 @@ public class Giocatore extends Entita{
 					break;
 			}
 		}
-		//g2.drawImage(sprite, posizioneSuSchermataX, posizioneSuSchermataY, pG.dimensioneSprite, pG.dimensioneSprite, null);
-		//g2.drawImage(sprite, posizioneSuSchermataX + pG.dimensioneSprite, posizioneSuSchermataY - pG.dimensioneSprite, pG.dimensioneSprite, pG.dimensioneSprite*3, null);
 		g2.drawImage(sprite, posizioneGlobaleX, posizioneGlobaleY, pG.dimensioneSprite, pG.dimensioneSprite, null);
 	}
 }

@@ -8,9 +8,6 @@ import java.awt.Rectangle;
 
 public abstract class Entita{
 
-	//statistiche dell'entità
-	//int vita,difesa,attacco,velocita;
-	//posizione nella mappa
 	public PannelloGioco pG;
 	public int posizioneGlobaleX,posizioneGlobaleY;
 	public int velocita,vita,danno;
@@ -30,7 +27,6 @@ public abstract class Entita{
 	
 	public Entita(PannelloGioco pG){
 		this.pG = pG;
-		//if(vita < 1 || difesa < 0 || attacco < 0 || velocita <0){throw new IllegalArgumentException("Valore d'inizializzazione Entita non valido");}
 	}
 	
 

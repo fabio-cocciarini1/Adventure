@@ -38,8 +38,6 @@ public class FinestraGioco extends Finestra{
 
 		finestra.add(pG, BorderLayout.CENTER);
 		
-		//finestra.pack();
-		finestra.setResizable(false);
 		finestra.setVisible(true);
 		finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

@@ -91,21 +91,7 @@ public class GestoreTile extends Tile{
 			int yMondo = rigaMondo * pG.dimensioneSprite;
 			
 			g2.drawImage(tile[numIdTile].immagineTile,xMondo,yMondo,pG.dimensioneSprite,pG.dimensioneSprite,null);
-			/*
-			//coordinate del mondo
-			int xMondo = colonnaMondo * pG.dimensioneSprite;
-			int yMondo = rigaMondo * pG.dimensioneSprite;
-			//coordinate del giocatore (nella schermata?)
-			int xSchermo = xMondo - giocatore.posizioneGlobaleX + giocatore.posizioneSuSchermataX;
-			int ySchermo = yMondo - giocatore.posizioneGlobaleY + giocatore.posizioneSuSchermataY;
 			
-			if(xMondo + pG.dimensioneSprite > giocatore.posizioneGlobaleX - giocatore.posizioneSuSchermataX ||
-					xMondo + pG.dimensioneSprite < giocatore.posizioneSuSchermataX + giocatore.posizioneSuSchermataX ||
-					yMondo - pG.dimensioneSprite > giocatore.posizioneGlobaleY - giocatore.posizioneSuSchermataY ||
-					yMondo + pG.dimensioneSprite < giocatore.posizioneGlobaleY + giocatore.posizioneSuSchermataY){
-						g2.drawImage(tile[numIdTile].immagineTile,xSchermo,ySchermo,pG.dimensioneSprite,pG.dimensioneSprite,null);
-					}*/
-
 			colonnaMondo++;
 
 			if(colonnaMondo == pG.maxMappaCol){

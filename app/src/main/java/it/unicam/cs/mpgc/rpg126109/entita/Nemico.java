@@ -60,22 +60,6 @@ public class Nemico extends Entita{
 			g2.drawImage(giu1,posizioneGlobaleX,posizioneGlobaleY,pG.dimensioneSprite,pG.dimensioneSprite,null);
 		}
 	}
-	/*public int xRelativaAGiocatore(){
-		if(posizioneGlobaleX > giocatore.posizioneGlobaleX){
-			return posizioneGlobaleX-giocatore.posizioneGlobaleX;
-		}
-		else{
-			return posizioneGlobaleX+giocatore.posizioneGlobaleX;
-		} 
-	}
-	public int yRelativaAGiocatore(){
-		if(posizioneGlobaleY > giocatore.posizioneGlobaleY){
-			return giocatore.posizioneSuSchermataY+(posizioneGlobaleY-giocatore.posizioneGlobaleY);
-		}
-		else{
-			return giocatore.posizioneSuSchermataY-(posizioneGlobaleY-giocatore.posizioneGlobaleY);
-		} 
-	}*/
 	public boolean visibile(){
 		if(Math.abs(posizioneGlobaleX - getXGiocatore()) < pG.maxCol * pG.dimensioneSprite &&
 			Math.abs(posizioneGlobaleY - getYGiocatore()) < pG.maxRighe * pG.dimensioneSprite){

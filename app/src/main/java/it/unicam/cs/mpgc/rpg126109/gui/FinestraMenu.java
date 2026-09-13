@@ -38,9 +38,10 @@ public class FinestraMenu extends Finestra{
 		pulsante2.setLayout(new BoxLayout(pulsante2,BoxLayout.X_AXIS));
 		pulsante3.setLayout(new BoxLayout(pulsante3,BoxLayout.X_AXIS));
 
-
+		//Box.createVerticalGlue serve per distanziare i pulsanti dai bordi e tra di loro
 		contieniPulsanti.add(Box.createVerticalGlue());
-
+		
+		//Box.createHorizontalGlue serve per centrare i pulsanti con la bisettrice verticale dello finestra
 		pulsante1.add(Box.createHorizontalGlue());
 		pulsante1.add(nuovaPartita);
 		pulsante1.add(Box.createHorizontalGlue());

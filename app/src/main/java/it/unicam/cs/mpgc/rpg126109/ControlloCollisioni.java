@@ -10,23 +10,10 @@ import java.io.IOException;
 public class ControlloCollisioni{
 	
 	PannelloGioco pG;
-	//GestoreEntita gE;
-	//Giocatore giocatore;
 
 	public ControlloCollisioni(PannelloGioco pG){
 		this.pG = pG;
-		//this.gE = gE;
-		//getGiocatore();
 	}
-	/*
-	public void getGiocatore(){
-		for(int i=0;i<gE.entitaSullaMappa.size();i++){
-			if(gE.entitaSullaMappa.get(i) instanceof Giocatore){
-				giocatore = (Giocatore) gE.entitaSullaMappa.get(i);
-			}
-		}
-	}*/
-
 
 	/** Per le collisioni ho bisogno delle coordinate dei quattro lati
 	 * di una entità, per poterne ottenere i quattro lati,
